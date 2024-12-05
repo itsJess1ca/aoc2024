@@ -1,6 +1,7 @@
-export function timeTaken(fn: Function) {
+export function timeTaken(label: string, fn: Function, ...args: unknown[]) {
     const start = performance.now();
-    fn();
+    const response = fn(...args);
     const after = performance.now()
-    console.log(`Took ${(after - start).toFixed(2)}ms`);
+    console.log(`[${label}] Took ${(after - start).toFixed(2)}ms`);
+    return response;
 }
